@@ -1,0 +1,41 @@
+apps:
+  - name: akatsuki-pypi-api
+    environment: production
+    codebase: akatsuki-pypi
+    replicaCount: 1
+    container:
+      image:
+        repository: osuakatsuki/akatsuki-pypi
+        tag: latest
+      port: 80
+      # readinessProbe:
+      #   httpGet:
+      #     path: /_health
+      #     port: 80
+      #   initialDelaySeconds: 10
+      #   periodSeconds: 10
+      #   timeoutSeconds: 2
+      #   successThreshold: 1
+      #   failureThreshold: 3
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1Gi
+        requests:
+          cpu: 300m
+          memory: 500Mi
+      env:
+        - name: APP_COMPONENT
+          value: api
+      imagePullSecrets:
+        - name: osuakatsuki-registry-secret
+      volumeMounts:
+        - name: akatsuki-pypi-api-volume
+          mountPath: /root/.devpi
+    volumes:
+      - name: akatsuki-pypi-api-volume
+        persistentVolumeClaim:
+          claimName: akatsuki-pypi-api-volume
+    service:
+      type: ClusterIP
+      port: 80
