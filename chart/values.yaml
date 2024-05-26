@@ -2,7 +2,7 @@ apps:
   - name: akatsuki-pypi-api
     environment: production
     codebase: akatsuki-pypi
-    replicaCount: 2
+    replicaCount: 1
     container:
       image:
         repository: osuakatsuki/akatsuki-pypi
