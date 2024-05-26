@@ -29,6 +29,13 @@ apps:
           value: api
       imagePullSecrets:
         - name: osuakatsuki-registry-secret
+      volumeMounts:
+        - name: akatsuki-pypi-api-volume
+          mountPath: /root/.devpi
+    volumes:
+      - name: akatsuki-pypi-api-volume
+        persistentVolumeClaim:
+          claimName: akatsuki-pypi-api-volume
     service:
       type: ClusterIP
       port: 80
