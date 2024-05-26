@@ -23,7 +23,7 @@ apps:
           memory: 750Mi
         requests:
           cpu: 500m
-          memory: 750Mi
+          memory: 500Mi
       env:
         - name: APP_COMPONENT
           value: api
