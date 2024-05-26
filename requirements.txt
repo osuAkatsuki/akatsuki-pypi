@@ -1,0 +1,4 @@
+devpi-client # ==5.2.2
+devpi-server # ==5.5.1
+devpi-web # ==4.0.6
+ruamel.yaml
