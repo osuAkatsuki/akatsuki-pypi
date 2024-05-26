@@ -8,3 +8,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/opt/volume/akatsuki-pypi-api"
